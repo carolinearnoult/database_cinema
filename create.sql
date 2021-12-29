@@ -6,32 +6,36 @@ CREATE table cinema (
     address VARCHAR(150),
     city VARCHAR(50),
     zipCode INTEGER(10),
-)
+) ENGINE=InnoDB;
 
 CREATE table movie (
     id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
     name VARCHAR(50) NOT NULL,
     minutes INTEGER NOT NULL
-)
+) ENGINE=InnoDB;
 
 CREATE table screen (
     id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
     cinema_id INTEGER NOT NULL,
     name VARCHAR(50),
     seats INTEGER NOT NULL, 
-)
+) ENGINE=InnoDB;
 
 CREATE table prices (
     id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
     name VARCHAR(50),
     price FLOAT,
-)
+) ENGINE=InnoDB;
 
 CREATE table users (
     id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
     email VARCHAR (100),
-    password INTEGER (100)
-)
+    password INTEGER (100),
+    GRANT ALL ON cinema.* TO 'users'@'%';
+    GRANT ALL ON cinema TO 'users'@'%';
+    GRANT CREATE ON cinema TO 'users'@'%';
+FLUSH PRIVILEGES;
+)ENGINE=InnoDB;
 
 CREATE table reservation (
     cinema_id INTEGER NOT NULL,
@@ -43,7 +47,7 @@ CREATE table reservation (
     CONSTRAINT fk_screen FOREIGN KEY(screen_id) REFERENCES screen(id),
     CONSTRAINT fk_movie FOREIGN KEY(movie_id) REFERENCES movie(id),
     CONSTRAINT fk_prices FOREIGN KEY(prices_id) REFERENCES prices(id)
-)
+) ENGINE=InnoDB;
 
 
 INSERT INTO cinema (name) VALUES 
@@ -97,3 +101,11 @@ INSERT INTO reservation (cinema_id, screen_id, movie_id, start_date, end_date) V
 	(5, 2, 2, DATE("2022-01-01"), DATE("2022-01-21")),
 	(5, 3, 4, DATE("2022-01-01"), DATE("2022-01-21")),
 	(5, 4, 8, DATE("2022-01-01"), DATE("2022-01-21"));
+
+    select cinema.name AS "cinema", screen.name AS "screen", screen.seats AS "seats", 
+		movie.name AS "movie", movie.minutes AS "minutes", 
+		reservation.start_date AS "start date", reservation.end_date AS "end date"
+FROM cinema
+JOIN reservation ON cinema.id = reservation.cinema_id 
+JOIN screen ON screen.id = reservation.screen_id 
+JOIN Movie ON movie.id = reservation.movie_id;
