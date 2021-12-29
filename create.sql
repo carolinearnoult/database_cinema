@@ -31,7 +31,6 @@ CREATE table reservation (
     cinema_id INTEGER NOT NULL,
     screen_id INTEGER NOT NULL,
     movie_id INTEGER NOT NULL,
-    prices_id INTEGER NOT NULL
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     CONSTRAINT fk_cinema FOREIGN KEY(cinema_id) REFERENCES cinema(id),
@@ -67,7 +66,7 @@ INSERT INTO screen (cinema_id, name, seats) VALUES (3, '1', 200), (3, '2', 200),
 INSERT INTO screen (cinema_id, name, seats) VALUES (4, NULL , 160);
 INSERT INTO screen (cinema_id, name, seats) VALUES (5, '1', 120), (5, '2', 100), (5, '3', 130), (5, '4', 100);
 
-INSERT INTO reservation (cinema_id, screen_id, movie_id, start_date, end_date, prices_id) VALUES
+INSERT INTO reservation (cinema_id, screen_id, movie_id, start_date, end_date) VALUES
     (1, 1, 1, DATE("2022-01-01"), DATE("2022-01-21")),
 	(1, 2, 2, DATE("2022-01-01"), DATE("2022-01-21")),
 	(1, 3, 3, DATE("2022-01-01"), DATE("2022-01-21")),
