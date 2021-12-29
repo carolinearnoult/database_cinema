@@ -55,13 +55,19 @@ INSERT INTO movie (name, minutes) VALUES
 ('Matrix', 148), 
 ('a perfect ennemy', 110);
 
+INSERT INTO prices (prices_id, name, price) VALUES
+(1, 'Plein tarifs', 9.20),
+(2, 'Etudiant', 7.60),
+(3, 'Moins de 14ans', 5.90);
+
+
 INSERT INTO screen (cinema_id, name, seats) VALUES (1, '1', 120), (1, '2', 100), (1, '3', 130), (1, '4', 100);
 INSERT INTO screen (cinema_id, name, seats) VALUES (2, 'Main Floor', 80), (2, 'Downstairs', 70), (2, 'Upstairs', 80);
 INSERT INTO screen (cinema_id, name, seats) VALUES (3, '1', 200), (3, '2', 200), (3, '3', 200), (3, '4', 150);
 INSERT INTO screen (cinema_id, name, seats) VALUES (4, NULL , 160);
 INSERT INTO screen (cinema_id, name, seats) VALUES (5, '1', 120), (5, '2', 100), (5, '3', 130), (5, '4', 100);
 
-INSERT INTO reservation (cinema_id, screen_id, movie_id, start_date, end_date) VALUES
+INSERT INTO reservation (cinema_id, screen_id, movie_id, start_date, end_date, prices_id) VALUES
     (1, 1, 1, DATE("2022-01-01"), DATE("2022-01-21")),
 	(1, 2, 2, DATE("2022-01-01"), DATE("2022-01-21")),
 	(1, 3, 3, DATE("2022-01-01"), DATE("2022-01-21")),
