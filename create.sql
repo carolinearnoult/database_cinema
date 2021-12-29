@@ -27,6 +27,12 @@ CREATE table prices (
     price FLOAT,
 )
 
+CREATE table users (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    email VARCHAR (100),
+    password INTEGER (100)
+)
+
 CREATE table reservation (
     cinema_id INTEGER NOT NULL,
     screen_id INTEGER NOT NULL,
@@ -58,6 +64,14 @@ INSERT INTO prices (prices_id, name, price) VALUES
 (1, 'Plein tarifs', 9.20),
 (2, 'Etudiant', 7.60),
 (3, 'Moins de 14ans', 5.90);
+
+INSERT INTO users (users_id, email, password) VALUES
+(1, 'cgrbordeaux@hotmail.com', '$2y$10$kjH5DQxbrwkiukix6bjx2O7knTMwAu3K1m2TjxAKj1QMXpGOJziW2'),
+(2, 'cgrbayonne@hotmail.com', '$2y$10$Yln57F95CgZbiMSJ5teTjOPSK0BhM84.IxWJGVXKKjA/jLj.J8sNa'),
+(3, 'cgrpau@hotmail.com', '$2y$10$VevOcS2i3zSf6qQ713jiW.bY6PCjeaY7YjVs2ZSa4QLNikUJmHSQi'),
+(4, 'cgrfontainelecomte@hotmail.com', '$2y$10$4BEc.CNY7vNu0Psb6HLv2u1o7JNpUHgD1XtA5WKrlkqZpbc6zjvQu'),
+(5, 'cgrtarnos@hotmail.com', '$2y$10$Vny.kMxL60N19oQqvtgRQuEdOgamZnFOIBbYW7OniSsnwlZ2Mqxze');
+
 
 
 INSERT INTO screen (cinema_id, name, seats) VALUES (1, '1', 120), (1, '2', 100), (1, '3', 130), (1, '4', 100);
